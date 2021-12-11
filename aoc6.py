@@ -1,3 +1,4 @@
+#maybe threw away p1 solver here? (trivial problem) 
 RB,n = [0]*9, 9
 for line in open('input/6put.txt', 'r'): 
     for nbr in line.split(','): RB[int(nbr)] += 1

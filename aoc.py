@@ -73,7 +73,7 @@ def a4():
                             wonMxs.add(i)
         return bingo * sum([nbr for row in mx for nbr in row if nbr != -1])   
         
-    lookup, mxs, nbrs = setup() # lookup: reduce time complexity
+    lookup, mxs, nbrs = setup() # lookup: wroom wroom
     return findWinner(True), findWinner(False)
 
 

@@ -14,16 +14,14 @@ def setup():
     return AM, set(), edges
 
 def traverse(node, path, doubleDip):
-    if doubleDip == 'start': return
-    if path in node.history and doubleDip in ['', 'spent DD']: return
+    if doubleDip == 'start' or path in node.history and doubleDip in ['', 'spent DD']: return
     node.history.add(path)
     if node.name == 'end': 
         ans.add(path)
         return
     for e in node.edges:
         if ord(e[0]) >= ord('a') and (e in path and e != doubleDip): continue # tuple -> set, possible optimization.. 
-        if doubleDip == e: traverse(AM[e], path + (e,), 'spent DD')
-        else: traverse(AM[e], path + (e,), doubleDip)
+        traverse(AM[e], path + (e,), 'spent DD' if doubleDip == e else doubleDip)
         if doubleDip == '': traverse(AM[e], path + (e,), e)
 
 AM, ans, edges = setup()
